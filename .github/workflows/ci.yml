@@ -11,47 +11,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
       - name: Install dependencies
         run: |
           cd backend
           npm install
-          
       - name: Generate Prisma Client
         run: |
           cd backend
           npx prisma generate
-          
-      - name: Build check
-        run: |
-          cd backend
-  
+        env:
+          DATABASE_URL: "file:./dev.db" 
 
   frontend-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
       - name: Install dependencies
         run: |
           cd frontend
           npm install
-          
-      - name: Type check (TypeScript)
+      - name: Type check
         run: |
           cd frontend
-          npm run type-check || npx tsc --noEmit
-          
+          npx tsc --noEmit
       - name: Build project
         run: |
           cd frontend
