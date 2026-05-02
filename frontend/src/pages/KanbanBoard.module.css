@@ -1,0 +1,26 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+}

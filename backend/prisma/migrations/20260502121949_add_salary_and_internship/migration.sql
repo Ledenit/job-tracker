@@ -1,0 +1,31 @@
+/*
+  Warnings:
+
+  - You are about to drop the column `salary` on the `Application` table. All the data in the column will be lost.
+
+*/
+-- RedefineTables
+PRAGMA defer_foreign_keys=ON;
+PRAGMA foreign_keys=OFF;
+CREATE TABLE "new_Application" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "position" TEXT NOT NULL,
+    "salaryFrom" INTEGER,
+    "salaryTo" INTEGER,
+    "internshipDuration" INTEGER,
+    "status" TEXT NOT NULL DEFAULT 'Sent',
+    "link" TEXT,
+    "format" TEXT NOT NULL DEFAULT 'Remote',
+    "employmentType" TEXT NOT NULL DEFAULT 'Full-time',
+    "experience" TEXT,
+    "notes" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "companyId" INTEGER NOT NULL,
+    CONSTRAINT "Application_companyId_fkey" FOREIGN KEY ("companyId") REFERENCES "Company" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+INSERT INTO "new_Application" ("companyId", "createdAt", "employmentType", "experience", "format", "id", "link", "notes", "position", "status", "updatedAt") SELECT "companyId", "createdAt", "employmentType", "experience", "format", "id", "link", "notes", "position", "status", "updatedAt" FROM "Application";
+DROP TABLE "Application";
+ALTER TABLE "new_Application" RENAME TO "Application";
+PRAGMA foreign_keys=ON;
+PRAGMA defer_foreign_keys=OFF;

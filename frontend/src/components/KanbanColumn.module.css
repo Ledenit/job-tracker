@@ -1,0 +1,40 @@
+.column {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  max-height: 100%;
+}
+
+.columnHeader {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.badge {
+  background-color: var(--bg-main);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.cardList {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--bg-main);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}

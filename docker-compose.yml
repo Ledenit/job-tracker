@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: job-tracker-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/prisma/dev.db:/app/prisma/dev.db 
+
+  frontend:
+    build: ./frontend
+    container_name: job-tracker-frontend
+    ports:
+      - "80:80" 
+    depends_on:
+      - backend
