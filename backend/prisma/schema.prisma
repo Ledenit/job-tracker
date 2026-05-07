@@ -32,6 +32,8 @@ model Application {
   employmentType String   @default("Full-time") // "Full-time", "Part-time", "Internship"
   experience     String?  
   notes          String?  
+  priority       String   @default("Medium") // "Low", "Medium", "High"
+  order          Int      @default(0)
   
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt

@@ -56,6 +56,14 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
+input:disabled {
+  background-color: var(--bg-main);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.7;
+  border-color: var(--border-color);
+}
+
 
 .checkboxGroup {
   flex-direction: row;
@@ -83,4 +91,16 @@ input:focus {
 
 .submitBtn:hover:not(:disabled) {
   background-color: var(--primary-hover);
+}
+
+.textarea {
+  padding: 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, KanbanSquare, Sun, Moon, Briefcase, Plus, Menu} from 'lucide-react';
+import { LayoutDashboard, KanbanSquare, Sun, Moon, Briefcase, Menu, PlusCircle } from 'lucide-react';
 import { Modal } from './Modal';
 import { AddApplicationForm } from './AddApplicationForm';
 import styles from './Layout.module.css';
@@ -37,13 +37,18 @@ export const Layout = ({ children }: LayoutProps) => {
             <div className={`${styles.sidebarOverlay} ${isSidebarOpen ? styles.open : ''}`} onClick={() => setIsSidebarOpen(false)} />
 
             <aside className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
-                <div className={styles.logo}>
-                    <Briefcase size={28} />
-                    <span>JobTracker</span>
+                <div className={styles.sidebarHeader}>
+                    <div className={styles.logo}>
+                        <Briefcase size={28} />
+                        <span>JobTracker</span>
+                    </div>
+                    <button onClick={toggleTheme} className={styles.themeToggle}>
+                        {isDark ? <Sun size={22} /> : <Moon size={22} />}
+                    </button>
                 </div>
 
                 <button className={styles.addBtn} onClick={() => { setIsModalOpen(true); setIsSidebarOpen(false); }}>
-                    <Plus size={20} /> Создать
+                    <PlusCircle size={20} /> Новый отклик
                 </button>
 
                 <nav className={styles.nav}>
@@ -51,15 +56,9 @@ export const Layout = ({ children }: LayoutProps) => {
                         <LayoutDashboard size={20} /> Дашборд
                     </Link>
                     <Link to="/board" className={`${styles.navLink} ${location.pathname === '/board' ? styles.active : ''}`}>
-                        <KanbanSquare size={20} /> Kanban Доска
+                        <KanbanSquare size={20} /> Kanban
                     </Link>
                 </nav>
-
-                <div className={styles.sidebarFooter}>
-                    <button onClick={toggleTheme} className={styles.themeToggle}>
-                        {isDark ? <Sun size={22} /> : <Moon size={22} />}
-                    </button>
-                </div>
             </aside>
 
             <main className={styles.mainContent}>

@@ -8,9 +8,11 @@ interface KanbanColumnProps {
   title: string;
   applications: Application[];
   onDelete: (id: number) => void;
+  onEdit: (app: Application) => void;
+  onView: (app: Application) => void;
 }
 
-export const KanbanColumn = ({ id, title, applications, onDelete }: KanbanColumnProps) => {
+export const KanbanColumn = ({ id, title, applications, onDelete, onEdit, onView }: KanbanColumnProps) => {
   return (
     <div className={styles.column}>
       <div className={styles.columnHeader}>
@@ -20,11 +22,7 @@ export const KanbanColumn = ({ id, title, applications, onDelete }: KanbanColumn
 
       <Droppable droppableId={id}>
         {(provided) => (
-          <div 
-            className={styles.cardList}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
+          <div className={styles.cardList} ref={provided.innerRef} {...provided.droppableProps}>
             {applications.map((app, index) => (
               <Draggable key={app.id} draggableId={app.id.toString()} index={index}>
                 {(provided) => (
@@ -32,6 +30,8 @@ export const KanbanColumn = ({ id, title, applications, onDelete }: KanbanColumn
                     app={app} 
                     provided={provided} 
                     onDelete={onDelete} 
+                    onEdit={onEdit} 
+                    onView={onView} 
                   />
                 )}
               </Draggable>

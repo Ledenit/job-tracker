@@ -21,6 +21,7 @@ export interface Application {
   updatedAt: string;
   companyId: number;
   company: Company;
+  priority: string;
 }
 
 export interface CreateApplicationDTO {
@@ -28,9 +29,11 @@ export interface CreateApplicationDTO {
   isAccredited: boolean;
   city?: string;
   position: string;
+  notes?: string;
   salaryFrom?: number | null;
   salaryTo?: number | null;
   internshipDuration?: number | null;
   format: string;
   link?: string;
+  priority: string;
 }

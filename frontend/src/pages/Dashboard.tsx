@@ -62,6 +62,7 @@ export const Dashboard = () => {
               <YAxis stroke="var(--text-secondary)" fontSize={12} tickLine={false} axisLine={false} />
               <Tooltip
                 cursor={{ fill: 'var(--bg-main)', opacity: 0.4 }}
+                formatter={(value: any) => [value, 'Кол-во']}
                 contentStyle={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-color)', borderRadius: '8px' }}
               />
               <Bar dataKey="value" radius={[4, 4, 0, 0]} />
@@ -82,6 +83,7 @@ export const Dashboard = () => {
                 stroke="none"
               />
               <Tooltip
+                formatter={(value: any) => [value, 'Кол-во']}
                 contentStyle={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-color)', borderRadius: '8px' }}
               />
               <Legend verticalAlign="bottom" height={36} />
